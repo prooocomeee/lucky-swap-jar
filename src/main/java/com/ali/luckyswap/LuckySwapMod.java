@@ -44,7 +44,7 @@ public class LuckySwapMod implements ModInitializer {
 		PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) -> {
 			if (world instanceof ServerLevel level
 					&& player instanceof ServerPlayer sp
-					&& state.is(Blocks.YELLOW_CONCRETE))) {
+					&& state.is(Blocks.YELLOW_CONCRETE)) {
 				level.removeBlock(pos, false);
 				openLucky(level, pos, sp);
 				return false; // نلغي الكسر العادي حتى ما ينزل البلوك نفسه
@@ -185,7 +185,7 @@ public class LuckySwapMod implements ModInitializer {
 	}
 
 	private static void effect(ServerLevel level, Vec3 at, ServerPlayer p, String spec) {
-		run(level, at, "effect give " + p.getUUID() + " minecraft:" + spec);
+		run(level, at, "effect give " + p.getGameProfile().getName() + " minecraft:" + spec);
 	}
 
 	private static void drop(ServerLevel level, Vec3 at, ItemStack stack) {
