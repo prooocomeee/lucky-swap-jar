@@ -44,7 +44,7 @@ public class LuckySwapMod implements ModInitializer {
 		PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) -> {
 			if (world instanceof ServerLevel level
 					&& player instanceof ServerPlayer sp
-					&& state.is(Blocks.YELLOW_GLAZED_TERRACOTTA)) {
+					&& state.is(Blocks.YELLOW_CONCRETE))) {
 				level.removeBlock(pos, false);
 				openLucky(level, pos, sp);
 				return false; // نلغي الكسر العادي حتى ما ينزل البلوك نفسه
@@ -111,11 +111,11 @@ public class LuckySwapMod implements ModInitializer {
 	// ---------------- اللكي بلوك ----------------
 
 	private static void giveLuckyBlock(ServerPlayer p) {
-		ItemStack stack = new ItemStack(Items.YELLOW_GLAZED_TERRACOTTA);
+		ItemStack stack = new ItemStack(Items.YELLOW_CONCRETE);
 		stack.set(DataComponents.ITEM_NAME,
 				Component.literal("Lucky Block").withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
 		if (!p.getInventory().add(stack)) {
-			p.drop(stack, false);
+			drop((ServerLevel) p.level(), p.position(), stack);
 		}
 	}
 
