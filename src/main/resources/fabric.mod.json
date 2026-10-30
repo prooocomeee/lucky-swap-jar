@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "luckyswap",
+  "version": "${version}",
+  "name": "Lucky Swap",
+  "description": "Every 10 minutes players swap places (3-2-1 countdown). Every 10 seconds everyone gets a Lucky Block with a random effect. Server-side: clients do not need it.",
+  "authors": ["Ali"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.ali.luckyswap.LuckySwapMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
